@@ -1,4 +1,4 @@
-package com.jster.servlet;
+package com.sample.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/JobseekerSearch")
 public class SearchJobseekersPreprocess extends HttpServlet {
-	   private DBLayer dbl;
+	   private SearchJobseekerDAO dbl;
 	   public void init() throws ServletException {
-	      dbl = new DBLayer("system", "sysdba");
+	      dbl = new SearchJobseekerDAO("system", "sysdba");
 	   }
 	   public void doGet(HttpServletRequest request, HttpServletResponse response)
 			      throws ServletException, IOException {
