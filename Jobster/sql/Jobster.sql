@@ -205,11 +205,11 @@ Create Table Job_User_Favorites (
     user_id number,
     job_id number,
     constraint fk_juf_user
-    foreign key (user_id)
-    references Users(user_id),
+        foreign key (user_id)
+        references Users(user_id),
     constraint fk_juf_job
-    foreign key (job_id)
-    references Job_Post(job_id)
+        foreign key (job_id)
+        references Job_Post(job_id)
 );
 
 --User Preference Table
