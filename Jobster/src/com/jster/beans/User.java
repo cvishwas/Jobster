@@ -1,5 +1,9 @@
 package com.jster.beans;
 
+import java.util.List;
+
+import com.jster.beans.JobPost;
+
 public class User {
 	private int id;
 	private String user_name;
@@ -9,10 +13,23 @@ public class User {
 	private String address;
 	private String email;
 	private int acc_type;
+    private List<JobPost> jobPostList;
 	
 	public User(){
 		
 	}
+	
+
+	public User(int id, String user_name, String f_name, String l_name, String email) {
+		super();
+		this.f_name = f_name;
+		this.id = id;
+		this.user_name = user_name;
+		this.l_name = l_name;
+		this.email = email;
+	}
+
+
 
 	public String getUser_name() {
 		return user_name;
@@ -77,6 +94,15 @@ public class User {
 	public void setAcc_type(int acc_type) {
 		this.acc_type = acc_type;
 	}
+
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", user_name=" + user_name + ", password=" + password + ", f_name=" + f_name
+				+ ", l_name=" + l_name + ", address=" + address + ", email=" + email + ", acc_type=" + acc_type
+				+ ", jobPostList=" + jobPostList + "]";
+	}
+	
 	
 	
 }
