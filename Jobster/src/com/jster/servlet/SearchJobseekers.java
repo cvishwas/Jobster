@@ -1,4 +1,4 @@
-package com.jster.servlet;
+package com.sample.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SearchJobseekers extends HttpServlet {
 	 
-	   private DBLayer dbl;
+	   private SearchJobseekerDAO dbl;
 	   public void init() throws ServletException {
 	      // Do required initialization
-	      dbl = new DBLayer("system", "sysdba");
+	      dbl = new SearchJobseekerDAO("system", "sysdba");
 	   }
 
 	   public void doPost(HttpServletRequest request, HttpServletResponse response)
