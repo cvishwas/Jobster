@@ -216,3 +216,14 @@ Create Table Job_User_Favorites (
     foreign key (job_id)
     references Job_Post(job_id)
 );
+
+
+-- Table for employers to add their favorite jobseekers, and select them for interview if they wish
+Create Table EMPLOYER_FAVORITES(
+    user_id number,
+    employer_id number,
+    to_interview number,
+    CONSTRAINT FK_EMPLOYER_FAV
+        FOREIGN KEY (user_id) REFERENCES Users(user_id),
+        FOREIGN KEY (employer_id) REFERENCES Users(user_id)
+);
