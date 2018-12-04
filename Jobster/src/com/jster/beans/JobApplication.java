@@ -3,6 +3,10 @@ package com.jster.beans;
 import java.util.Objects;
 
 public class JobApplication{
+	private String userId;
+	private String jobId;
+	private String dateApplied; 
+	
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -28,8 +32,28 @@ public class JobApplication{
 	
 	private String workEligibility;
 	
-	public JobApplication() {
-		
+	public void setUserId(String userID) {
+		this.userId=userID;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+	
+	public void seJobId(String jobID) {
+		this.jobId=jobID;
+	}
+	
+	public String getJobId() {
+		return jobId;
+	}
+	
+	public void setDateApplied(String dateApplied) {
+		this.dateApplied=dateApplied;
+	}
+	
+	public String getDateApplied() {
+		return dateApplied;
 	}
 	
 	public void setFirstName(String fname) {
@@ -182,12 +206,13 @@ public class JobApplication{
 	
 	@Override
 	public String toString() {
-		return "JavaBeans [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
-				+ city + ", state=" + state + ", country=" + country + ", zip=" + zip + ", dateOfBirth=" + dateOfBirth
-				+ ", phoneNumber=" + phoneNumber + ", email=" + email + ", schoolAttended=" + schoolAttended
-				+ ", degree=" + degree + ", major=" + major + ", gradDate=" + gradDate + ", gpa=" + gpa
-				+ ", companyName=" + companyName + ", jobTitle=" + jobTitle + ", dateStart=" + dateStart + ", dateEnd="
-				+ dateEnd + ", workEligibility=" + workEligibility + "]";
+		return "JavaBeans [userId=" + userId + ", jobId=" + jobId + ", dateApplied=" + dateApplied + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", zip=" + zip + ", dateOfBirth=" + dateOfBirth + ", phoneNumber="
+				+ phoneNumber + ", email=" + email + ", schoolAttended=" + schoolAttended + ", degree=" + degree
+				+ ", major=" + major + ", gradDate=" + gradDate + ", gpa=" + gpa + ", companyName=" + companyName
+				+ ", jobTitle=" + jobTitle + ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + ", workEligibility="
+				+ workEligibility + "]";
 	}
 	
 	
