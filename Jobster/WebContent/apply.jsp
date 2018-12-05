@@ -11,47 +11,47 @@
 <h3>Personal Information</h3>
 <form action="ApplicationSubmit">
 	First name:<br>
-	<input type="text" name="firstName">
+	<input type="text" name="firstName" required>
 	<br>
 	Last name:<br>
-	<input type="text" name="lastName">
+	<input type="text" name="lastName" required>
 	<br>
 	Address:<br>
-	<input type="text" name="address">
+	<input type="text" name="address" required>
 	<br>
 	City:<br>
-	<input type="text" name="city">
+	<input type="text" name="city" required>
 	<br>
 	Zip Code:<br>
-	<input type="number" name="zip">
+	<input type="number" name="zip" required>
 	<br>
 	State:<br>
-	<input type="text" name="state">
+	<input type="text" name="state" required>
 	<br>
 	Country:<br>
-	<input type="text" name="country">
+	<input type="text" name="country" required>
 	<br>
 	Date of Birth:<br>
-	<input type="date" name="dateOfBirth">
+	<input type="date" name="dateOfBirth" required>
 	<br>
 	Phone Number:<br>
-	<input type="text" name="phoneNumber">
+	<input type="text" name="phoneNumber" required>
 	<br>
 	Email:<br>
-	<input type="email" name="email">
+	<input type="email" name="email" required>
 	
 	<h3>Academic Information</h3>
 	School Attended:<br>
-	<input type="text" name="schoolAttended">
+	<input type="text" name="schoolAttended" required>
 	<br>
 	Degree: <br>
-	<input type="text" name="degree">
+	<input type="text" name="degree" required>
 	<br>
 	Major: <br>
-	<input type="text" name="major">
+	<input type="text" name="major" required>
 	<br>
 	Date Graduated:<br>
-	<input type="number" name="dateGrad">
+	<input type="date" name="dateGrad">
 	<br>
 	GPA:<br>
 	<input type="number" name="gpa">
@@ -59,22 +59,22 @@
 
 	<h3>Employment History</h3>
 	Company Name:<br>
-	<input type="text" name="compName">
+	<input type="text" name="compName" required>
 	<br>
 	Job Title:<br>
-	<input type="text" name="jobTitle">
+	<input type="text" name="jobTitle" required>
 	<br>
 	Date Started:<br>
-	<input type="date" name="dateStart">
+	<input type="date" name="dateStart" required>
 	<br>
 	Date Finished:<br>
-	<input type="date" name="dateEnd">
+	<input type="date" name="dateEnd" required>
 	<br>
 
 	<h3>Other</H3>
 	Are you eligible to work in the U.S.?
-	<br><input type="radio" name="workElig" value="Yes">Yes
-	<br><input type="radio" name="workElig" value="No">No
+	<br><input type="radio" name="workElig" value="Yes" required>Yes
+	<br><input type="radio" name="workElig" value="No" required>No
 	<br>
 	<input type="submit" value="Apply">
 </form>

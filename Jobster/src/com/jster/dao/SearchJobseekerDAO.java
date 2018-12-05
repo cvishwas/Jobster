@@ -18,10 +18,10 @@ public class SearchJobseekerDAO {
 	
 	public Vector<Jobseeker> DB_Search_Jobseekers(int salaryReq, String jobtypePref, String jobcategPref) {
 		Vector<Jobseeker> jobseekers = new Vector<Jobseeker>();
-		String jobcategQuery = "INNER JOIN JOB_TYPE ON USER_PREFERENCES.JOB_TYPE=JOB_TYPE.TYPE_ID "+
+		String jobtypeQuery = " INNER JOIN JOB_TYPE ON USER_PREFERENCES.JOB_TYPE=JOB_TYPE.TYPE_ID "+
 							   "AND JOB_TYPE.TYPE_ID ="+jobtypePref;
 				
-		String jobtypeQuery = "INNER JOIN JOB_CATEGORY ON USER_PREFERENCES.JOB_CATEG=JOB_CATEGORY.CATEG_ID "+
+		String jobcategQuery = " INNER JOIN JOB_CATEGORY ON USER_PREFERENCES.JOB_CATEG=JOB_CATEGORY.CATEG_ID "+
 							  "AND JOB_CATEGORY.CATEG_ID ="+jobcategPref;
 		
 		String salaryQuery = "SELECT USERS.F_NAME, USERS.L_NAME, USERS.EMAIL, USER_PREFERENCES.SALARY, USERS.USER_ID FROM Users " + 
@@ -29,6 +29,10 @@ public class SearchJobseekerDAO {
 				"AND USERS.ACC_TYPE=1 " + 
 				"AND USER_PREFERENCES.SALARY <= "+salaryReq;
 		String overallQuery;
+		
+		System.out.println(" Jobtype pref: " + jobtypePref + " and job categ pref: " + jobcategPref);
+		boolean test = jobcategPref.equals("n/a");
+		System.out.println(test);
 		
 		
 		try {
@@ -114,8 +118,29 @@ public class SearchJobseekerDAO {
 		return jc_vec;
 	}
 	
-//	public int setFavorites(int employer_id, int user_id) {
-		// implement me
-//	}
+	public int DB_setFavorites(int employer_id, int user_id) {
+		int success = 0;
+		 try {
+			 Statement s = con.createStatement();
+			 success = s.executeUpdate("INSERT INTO EMPLOYER_FAVORITES (user_id, employer_id, to_interview) VALUES ("+user_id+","+employer_id+", 0)");
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }
+		 
+		 return success;
+	}
+	
+	public int DB_toggleInterview(int employer_id, int user_id) {
+		int success = 0;
+		
+		try {
+			Statement s = con.createStatement();
+			success = s.executeUpdate("UPDATE EMPLOYER_FAVORITES SET to_interview = 1 - to_interview WHERE employer_id = "+employer_id+" AND user_id = "+user_id);
+		}catch(SQLException e) {
+			 e.printStackTrace();
+
+		}
+		return success;
+	}
 
 }
