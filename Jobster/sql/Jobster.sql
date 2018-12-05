@@ -61,6 +61,9 @@ Constraint fk_emp_user
     references Users(user_id)
 );
 
+ALTER TABLE Job_Post
+ADD job_title varchar(50);
+
 Create Sequence job_post_seq;
 
 ---Trigger for adding a primary key for a job post
