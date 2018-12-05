@@ -49,6 +49,18 @@ public class RegisterServlet extends HttpServlet {
 		User sessUser = new User();
 		sessUser.setUser_name(request.getParameter("username"));
 		sessUser.setPassword(request.getParameter("password"));
+		sessUser.setF_name(request.getParameter("f_name"));
+		sessUser.setL_name(request.getParameter("l_name"));
+		sessUser.setEmail(request.getParameter("email"));
+		sessUser.setAddress(request.getParameter("address"));
+		String account_type = request.getParameter("account_type");
+		if (account_type.equals("Employer")){
+			sessUser.setAcc_type(1);
+		}
+		else{
+			sessUser.setAcc_type(2);
+		}
+		
 		
 //		System.out.println(sessUser.getUser_name());
 //		check if username is avilable
@@ -56,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
 			UserUtil.commitNewUser(sessUser);
 			//		step 3 generate html
 			out.println("<html><body>");
-			out.println("User confirmed");
+			out.println("User Registered");
 			out.println("<br></br>");
 			out.println("<a href=portal.html>Return to Home</a>");
 			out.println("</body></html>");

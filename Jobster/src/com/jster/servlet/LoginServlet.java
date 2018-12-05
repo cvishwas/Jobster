@@ -54,6 +54,8 @@ public class LoginServlet extends HttpServlet {
 //		System.out.println(UserUtil.isUserNameAval(sessUser));
 //		check if User object is vaild
 		if(UserUtil.isUserValid(sessUser)){
+//			set the users information into user obj
+			UserUtil.loadUserObj(sessUser);
 			
 //			store user object in session to be passed along
 			HttpSession sess = request.getSession(true);
