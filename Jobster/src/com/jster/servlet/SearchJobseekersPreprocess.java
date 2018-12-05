@@ -26,5 +26,14 @@ public class SearchJobseekersPreprocess extends HttpServlet {
 			   	  request.setAttribute("jobcategories", jobcategories);
 			   	  
 			   	  request.getRequestDispatcher("JobseekerSearch.jsp").forward(request, response);
+			   	  
+/*
+				  String id =  request.getQueryString();
+				  if(id != null & !id.isEmpty()) {
+				  String resultID =  id.split("=")[0];
+				  System.out.print(resultID);
+				  }
+*/
+				  
 	   }
 }
