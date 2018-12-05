@@ -1,10 +1,11 @@
 package com.jster.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.jster.beans.JobPost;
 
-public class User {
+public class User implements Serializable{
 	private int id;
 	private String user_name;
 	private String password;
