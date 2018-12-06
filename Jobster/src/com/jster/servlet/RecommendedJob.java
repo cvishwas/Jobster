@@ -34,7 +34,9 @@ public class RecommendedJob extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		if(request.getParameter("recommendedJobs") != null) {
+			response.sendRedirect("recommendedJob.jsp");
+		}
 	}
 
 }

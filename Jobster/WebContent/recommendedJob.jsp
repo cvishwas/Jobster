@@ -49,8 +49,9 @@ try {
 				%>
 
 				<tr>
-				<td> <%=rs.getString("post_title") %> </td>
-				<td> <%=rs.getString("field") %> </td>
+				<td> <%=rs.getString("job_title") %> </td>
+				<td> </td>
+				<%-- <td> <%=rs.getString("created_date") %> </td> --%>
 				<td> <%=rs.getString("location") %> </td>
 				</tr>
 				<tr>
@@ -60,6 +61,13 @@ try {
 					}
 				} catch (Exception e){
 					e.printStackTrace();
+				} finally {
+					try {
+						rs.close();
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 				%>
 		</table>
