@@ -1,28 +1,48 @@
+Create Table Account_Identifier(
+    account_type_id number primary key,
+    account_type_name varchar(20)
+);
+
+Create Sequence acc_id_seq;
+
+insert into account_identifier(account_type_id, account_type_name)
+values (acc_id_seq.nextval, 'Employer');
+
+insert into account_identifier(account_type_id, account_type_name)
+values (acc_id_seq.nextval, 'Job Seeker');
+
 Create Table Users( 
 user_id number primary key,
 username varchar(30),
 password varchar(30),
 f_name varchar(30),
 l_name varchar(30),
-acc_type number, -- 1 for job seekers or 0 for employer
+acc_type number, -- 2 for job seekers or 1 for employer
 email varchar(30),
-address varchar(50)
+address varchar(50),
+Constraint fk_user_acc_type
+    foreign key (acc_type)
+    references Account_Identifier(account_type_id)
 );
 
 Create Sequence users_seq
     Start with 1
     Increment by 1;
 
+-- This is a test insert using no triggers
+insert into Users(user_id, username, password,f_name,l_name,acc_type)
+values(USERS_SEQ.nextval,'tim','123','tim','bill',1);
+
 ---Trigger for adding a primary key for a user
-Create Or Replace Trigger T_Users_Insert
-Before Insert On Users
-For Each Row
-Begin
-  Select users_seq.nextval
-  Into :new.user_id
-  From dual;
-End;
-/
+--Create Or Replace Trigger T_Users_Insert
+--Before Insert On Users
+--For Each Row
+--Begin
+--  Select users_seq.nextval
+--  Into :new.user_id
+--  From dual;
+--End;
+--/
 
 
 --Drop Table Location;

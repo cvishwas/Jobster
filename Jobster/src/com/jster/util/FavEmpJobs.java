@@ -64,6 +64,37 @@ public class FavEmpJobs implements java.io.Serializable{
 		return retNum;
 	}
 	
+	public void addFavEmp(String userName, String employerName, Connection conn) {
+		int userId = findUserNameId(userName, conn);
+		if(userId != -1) {
+			int employId = findUserNameId(employerName, conn);
+			if(employId != -1) {
+				addFavEmpDatabase(userId, employId, conn);
+			}
+			else {
+				//Should never hit this in practical use
+				System.out.println("Error: Employer not found in on our servers");
+			}
+		}
+		else {
+			//Should never hit this in practical use
+			System.out.println("Error: User not found in on our servers");
+		}
+	}
+	
+	
+	public void addFavEmpDatabase(int userId, int employerId, Connection conn) {
+		try {
+			Statement state = conn.createStatement();
+			String query = "Insert into User_Favorites_Employee (user_id, employer_id) values (" + userId+"," + employerId + ")";
+			state.executeUpdate(query);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+		}
+	}
 
 
 }
