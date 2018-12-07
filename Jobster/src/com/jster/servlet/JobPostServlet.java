@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jster.beans.JobPost;
+import com.jster.beans.User;
 import com.jster.service.JobPostService;
 import com.jster.service.impl.JobPostServiceImpl;
 
@@ -44,14 +46,19 @@ public class JobPostServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-    	String str = request.getQueryString();
      	List<JobPost> list = null;
-     	Integer userId;
-    	try {
-    		userId = Integer.parseInt(request.getQueryString().split("userId=")[1].split("&")[0]);
-    	} catch (NullPointerException ex) {
-    		userId = -1;
-    	}
+     	
+     	HttpSession session = request.getSession();
+     	User user=(User)session.getAttribute("UserObj");	
+		
+     	if(user == null) {
+     		
+     		try {
+        		user.setId(Integer.parseInt(request.getQueryString().split("userId=")[1].split("&")[0]));
+        	} catch (NullPointerException ex) {
+        		user.setId(-1);;
+        	}
+     	}
     	/******get the list depending on button was clicked*******************/
 	   	char showListBy = ' ';
 	   	String searchD = request.getParameter("searchName");
@@ -77,13 +84,15 @@ public class JobPostServlet extends HttpServlet {
 	    	/****** add/remove post as favorite********/
 		   	String postId = request.getParameter("postId");
 		   	if(!( postId == null || postId.equals("null"))) {
-		    	jps.addDelFavoritePostJob(userId, Integer.parseInt(postId));
+		    	jps.addDelFavoritePostJob(user.getId(), Integer.parseInt(postId));
 	    	}
 	    } 
 	    
-	    list = jps.getPostList(userId, searchD, showListBy);
+	    list = jps.getPostList(user.getId(), searchD, showListBy);
 	    
         request.setAttribute("list", list);
+        
         request.getRequestDispatcher("viewposts.jsp").forward(request, response);
+        
     } 
 }

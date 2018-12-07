@@ -22,32 +22,32 @@
 	crossorigin="anonymous"></script>
 </head>
 <body class="container-fluid">
-	<nav class="navbar navbar-light bg-light"> <a
-		class="navbar-brand text-info text-italic" href="">Jobster</a> <!-- Search post by posts, categories, states, cities -->
-	<form
-		action="viewposts?userId=<%= request.getParameter("userId")%>#search"
-		method="POST" class="mx-auto">
-		<div class="form-inline">
-			<input class="form-control mr-sm-2" type="search" method="POST"
-				name="searchName" placeholder="Search">
-			<button class="btn btn-outline-info my-2 my-sm-0" name="search"
-				type="submit">Search</button>
-		</div>
-		<div class="mx-auto">
-			<input type="radio" name="searchType" value="type"> by Type <input
-				type="radio" name="searchType" value="category"> by Category
-			<input type="radio" name="searchType" value="city"> by City <input
-				type="radio" name="searchType" value="state"> by State
-		</div>
-	</form>
-	<a class="nav-item nav-link btn-info" href="#">Log out</a> </nav>
+	<%@ include file="header.jsp" %>
 
 	<div class="mx-auto my-5 col-8">
+		<div class="row">
+			<div class="col-8"></div>
+				<!-- Search post by posts, categories, states, cities -->
+				<div class="col-4 my-4">
+				<form action="viewposts#search" method="POST" class="float-right" >
+	  				<div class="form-inline">
+		    			<input class="form-control mr-sm-2" type="search" method="POST" name="searchName" placeholder="Search">
+		   				<button class="btn btn-outline-info my-2 my-sm-0" name="search" type="submit">Search</button>
+	   				</div>
+	   				<div class = "mx-auto">
+		  				<input type="radio" name="searchType"  value="type"> by Type
+		  				<input type="radio" name="searchType"  value="category"> by Category
+		  				<input type="radio" name="searchType"  value="city"> by City
+		  				<input type="radio" name="searchType"  value="state"> by State
+					</div>
+	  			</form>
+	  		</div>
+	  	</div>
 		<div class="row">
 			<div id="navbarEx" class=" col-3 list-group ">
 				<!-- Show user's favorites posts -->
 				<form
-					action="viewposts?userId=<%= request.getParameter("userId") %>#favoritepost"
+					action="viewposts#favoritepost"
 					method="POST" class="mb-4">
 					<input type="submit" class="btn btn-info" name="showFavorite"
 						value="Show my favorites">
@@ -80,7 +80,7 @@
 								<div class="col-3 row">
 									<button class="btn btn-info">Apply</button>
 									<form name=""
-										action="viewposts?userId=<%= request.getParameter("userId") %>"
+										action="viewposts"
 										method="POST">
 										<input type="hidden" name="postId" value="${job.id}" />
 										<c:choose>
@@ -124,7 +124,7 @@
 								Locations:
 								<c:forEach items="${job.locations}" varStatus="status" var="loc">
 										${loc.city} ${loc.stateProvince}
-										<c:if test="${(fn:length(job.jobTypes)) != status.count}">,</c:if>
+										<c:if test="${(fn:length(job.locations)) != status.count}">,</c:if>
 								</c:forEach>
 							</h5>
 							<hr />
