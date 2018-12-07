@@ -32,6 +32,39 @@ public class JobApplication{
 	
 	private String workEligibility;
 	
+	public String GET_INSERT_QUERY() {
+		String sqlstatement="INSERT INTO JOB_APPLICATIONS(USER_ID,JOB_ID,DATE_APPLIED,"
+				+ "F_NAME,L_NAME,ADDRESS,CITY,STATE_US,COUNTRY,ZIP,DATE_OF_BIRTH,PHONE_NUMBER,EMAIL,"
+				+ "SCHOOL_ATTENDED,DEGREE,MAJOR,GRAD_DATE,GPA,"
+				+ "COMPANY_NAME,JOB_TITLE,DATE_STARTED,DATE_ENDED,WORK_ELIGIBILITY) "
+				+ "VALUES ("
+				+ "'"+userId+"',"
+				+ "'"+jobId+"',"
+				+ "to_date('"+dateApplied+"','YYYY-MM-DD'),"
+				+ "'"+firstName+"',"
+				+ "'"+lastName+"',"
+				+ "'"+address+"',"
+				+ "'"+city+"',"
+				+ "'"+state+"',"
+				+ "'"+country+"',"
+				+ "'"+zip+"',"
+				+ "to_date('"+dateOfBirth+"','YYYY-MM-DD'),"
+				+ "'"+phoneNumber+"',"
+				+ "'"+email+"',"
+				+ "'"+schoolAttended+"',"
+				+ "'"+degree+"',"
+				+ "'"+major+"',"
+				+ "to_date('"+gradDate+"','YYYY-MM-DD'),"
+				+ "'"+gpa+"',"
+				+ "'"+companyName+"',"
+				+ "'"+jobTitle+"',"
+				+ "to_date('"+dateStart+"','YYYY-MM-DD'),"
+				+ "to_date('"+dateEnd+"','YYYY-MM-DD'),"
+				+ "'"+workEligibility+"')";
+				return sqlstatement;
+	}
+	
+	
 	public void setUserId(String userID) {
 		this.userId=userID;
 	}
@@ -40,7 +73,7 @@ public class JobApplication{
 		return userId;
 	}
 	
-	public void seJobId(String jobID) {
+	public void setJobId(String jobID) {
 		this.jobId=jobID;
 	}
 	
@@ -203,6 +236,9 @@ public class JobApplication{
 	public String getWorkElig() {
 		return workEligibility;
 	}
+	
+	
+
 	
 	@Override
 	public String toString() {
