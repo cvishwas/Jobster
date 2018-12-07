@@ -3,8 +3,8 @@ package com.jster.beans;
 import java.util.Objects;
 
 public class JobApplication{
-	private String userId;
-	private String jobId;
+	private int userId;
+	private int jobId;
 	private String dateApplied; 
 	
 	private String firstName;
@@ -65,19 +65,19 @@ public class JobApplication{
 	}
 	
 	
-	public void setUserId(String userID) {
+	public void setUserId(int userID) {
 		this.userId=userID;
 	}
 	
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 	
-	public void setJobId(String jobID) {
+	public void setJobId(int jobID) {
 		this.jobId=jobID;
 	}
 	
-	public String getJobId() {
+	public int getJobId() {
 		return jobId;
 	}
 	
