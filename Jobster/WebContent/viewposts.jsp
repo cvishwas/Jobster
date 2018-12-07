@@ -53,8 +53,8 @@
 						value="Show my favorites">
 				</form>
 				<form
-					action="recommendedJob?userId=<%=request.getParameter("userId") %>#recommendedjob"
-					method="POST">
+					action="RecommendedJob?userId=<%=request.getParameter("userId") %>#recommendedjob"
+					method="POST" class="mb-4">
 					<input type="submit" class="btn btn-info" name="recommendedJobs"
 						value="Recommended Jobs">
 				</form>
