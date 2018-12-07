@@ -23,7 +23,7 @@
 	<input type="text" name="city" required>
 	<br>
 	Zip Code:<br>
-	<input type="number" name="zip" required>
+	<input type="number" name="zip" min="0" max="99999" required>
 	<br>
 	State:<br>
 	<input type="text" name="state" required>
@@ -35,7 +35,7 @@
 	<input type="date" name="dateOfBirth" required>
 	<br>
 	Phone Number:<br>
-	<input type="text" name="phoneNumber" required>
+	<input type="text" name="phoneNumber" max="9999999999" required >
 	<br>
 	Email:<br>
 	<input type="email" name="email" required>
@@ -54,7 +54,7 @@
 	<input type="date" name="dateGrad">
 	<br>
 	GPA:<br>
-	<input type="number" name="gpa">
+	<input type="number" name="gpa" min="0" max="4">
 	<br>
 
 	<h3>Employment History</h3>
