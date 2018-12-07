@@ -52,9 +52,10 @@
 					<input type="submit" class="btn btn-info" name="showFavorite"
 						value="Show my favorites">
 				</form>
-				<form
-					action="RecommendedJob?userId=<%=request.getParameter("userId") %>#recommendedjob"
-					method="POST" class="mb-4">
+				<form action="recommendedJob.jsp"
+					<%-- %>?userId=<%=request.getParameter("userId") %>#recommendedjob"--%>
+					method="POST"
+					class="mb-4">
 					<input type="submit" class="btn btn-info" name="recommendedJobs"
 						value="Recommended Jobs">
 				</form>
