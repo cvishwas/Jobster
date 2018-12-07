@@ -1,11 +1,19 @@
 package com.jster.servlet;
 
 import com.jster.beans.JobApplication;
+import connection.dbconnection;
+import connection.ApplyQuery;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class ApplyServlet extends HttpServlet {
 
 
@@ -37,6 +45,17 @@ public class ApplyServlet extends HttpServlet {
 		String workElig=request.getParameter("workElig");
 		
 		JavaBeans application=new JavaBeans();
+		
+		Date date = new Date();
+		String modDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
+		
+		int currentUserID=1; //temp userId to test functionality
+		int currentJobID=1; //temp jobID to test functionality
+		
+		
+		application.setUserId(currentUserID);
+		application.setJobId(currentJobID);
+		application.setDateApplied(modDate);
 		application.setFirstName(fname);
 		application.setLastName(lname);
 		application.setAddress(address);
@@ -62,30 +81,29 @@ public class ApplyServlet extends HttpServlet {
 		application.setWorkElig(workElig);
 		
 		System.out.println(application.toString());
+		System.out.println(application.GET_INSERT_QUERY());
+		String sql=(application.GET_INSERT_QUERY());
 		
-		//System.out.println(fname);
-		//System.out.println(lname);
-		//System.out.println(address);
-		//System.out.println(city);
-		//System.out.println(zip);
-		//System.out.println(state);
-		//System.out.println(country);
-		//System.out.println(dateOB);
-		//System.out.println(phoneNumber);
-		//System.out.println(email);
+		PreparedStatement prep=null;
+		dbconnection dbcon=new dbconnection();
+		Connection conn=dbcon.getConnection();
+		try {
+			prep=conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			prep.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		//System.out.println(school);
-		//System.out.println(degree);
-		//System.out.println(major);
-		//System.out.println(dateGraduated);
-		//System.out.println(gpa);
 		
-		//System.out.println(companyName);
-		//System.out.println(jobTitle);
-		//System.out.println(dateStart);
-		//System.out.println(dateEnd);
-		
-		//System.out.println(workElig);
+		//ApplyQuery query=new ApplyQuery();
+		//Connection conn=dbcon.getConnection();
+		//query.runQuery(sql,conn);
 		
 	}
 }
