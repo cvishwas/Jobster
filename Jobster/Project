@@ -1,0 +1,18 @@
+Document Management System
+DMS is a web application which maintains a central repository for all the documents of the enterprise. This gives various options like upload and delete of files, communicate with users on the uploads and gives capability to comment on the files.
+•	The initial phase of the application was built as a standaloane multi threaded application capable of authentication, upload ,delete and list files. The data persistence mechanism at this stage was the Windows File System.
+•	The next phase of the project involved in retaining the User Interface and middle layer, but transitioning the back end (Persistence layer) to Oracle database (11g). All necessary database components were created like schema, tables, stored procedure , triggers etc.
+•	The next phase involved moving from a stand alone mode to web application mode using JEE technologies like JSP, Servlets and application server – Tomcat. In this phase the front end of the application was replaced with web technologies while retaining the other two layers. This used the MVC pattern where servlets acted as controllers.
+•	In the final phase the whole project was moved to Spring framework where Spring MVC, Spring JDBC and Spring core was used. Maven was used for build and Cucumber for BDD testing.
+•	The project was done using Agile methodology . Scrum meeting were held on a daily basis.
+Talent Management System
+	This is an Enterprise Talent Management System where the employees can seek opportunities within the company and Hiring Managers can post the jobs. The jobs can be accessed by external jobseekers  as well.
+•	This is a Spring based web application built using technologies like Spring - Spring MVC, spring core and spring jdbc, Maven, Java 8, Oracle 11g, Apache Tomcat, Cucumber, Agile Methododlogy.
+•	This has 2 major modules: Jobseeker and Employer – Dept Hiring Manager. 
+•	Jobseeker – Has the capability to search for jobs, apply, save favorites for future, communication module to communicate with the employer.
+•	Employer/Hiring Manager – Posts a requirement, searches for profile, send communication, Receive and Review application, Initiate the hiring process.
+•	Followed Agile methodology. Had daily scrum calls.
+•	Used maven project  to build the web application.
+•	Designed database tables in alignment with the java classes for a more object oriented approach.
+•	Developed Spring beans for the Job Seeker and Employer components.
+
